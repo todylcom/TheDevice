@@ -73,10 +73,13 @@ void Error_Handler(void);
 #define LIGHT_PWR_GPIO_Port GPIOB
 #define BUTTON_Pin GPIO_PIN_8
 #define BUTTON_GPIO_Port GPIOA
+#define BUTTON_EXTI_IRQn EXTI4_15_IRQn
 #define BATT_CHRG_Pin GPIO_PIN_6
 #define BATT_CHRG_GPIO_Port GPIOB
+#define BATT_CHRG_EXTI_IRQn EXTI4_15_IRQn
 #define BATT_STDBY_Pin GPIO_PIN_7
 #define BATT_STDBY_GPIO_Port GPIOB
+#define BATT_STDBY_EXTI_IRQn EXTI4_15_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
