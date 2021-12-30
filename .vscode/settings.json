@@ -1,0 +1,33 @@
+{
+    "files.exclude": {
+        "build": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+    "cSpell.words": [
+        "CHRG",
+        "DEBUGLN",
+        "EXTI",
+        "GPIO",
+        "GPIOA",
+        "GPIOB",
+        "HEXLN",
+        "VREFINT",
+        "ctemp",
+        "hadc",
+        "hrtc",
+        "hspi",
+        "htim",
+        "huart",
+        "leds",
+        "mvolts",
+        "openiot",
+        "strln",
+        "vref"
+    ],
+    "C_Cpp.formatting": "Disabled",
+    "editor.tabSize": 2
+}

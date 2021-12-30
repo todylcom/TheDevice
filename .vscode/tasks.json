@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "type": "process",
+      "label": "Build",
+      "command": "make",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "options": {
+        "cwd": "${workspaceRoot}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+  ],
+  "version": "2.0.0"
+}
