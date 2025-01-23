@@ -14,3 +14,12 @@ void set_letter_l(uint8_t level);
 
 void set_all_letters(uint8_t level);
 void set_all_leds(uint8_t level);
+
+void back_and_forth(int initial_delay, int delay_step, int level);
+void running_lights(int initial_delay, int delay_step, int repetitions,
+                    int level);
+void alternating_letters(int initial_delay, int delay_step, int repetitions,
+                         int level);
+void morse_code_todyl(int brightness, int dot_delay, int dash_delay,
+                      int space_delay);
+void breathing();
