@@ -11,6 +11,9 @@ TheDevice is a Peer Award Trophy that evolves with each person who wins the Peer
 - Has a breathing effect.
 - Lights up each letter of **t-o-d-y-l**, followed by the logo.
 - The logo flashes twice.
+- Flashes alternating letters with random brightness.
+- Flashes with random brightness.
+- Fades out gradually.
 
 ## Technologies
 
@@ -24,28 +27,28 @@ This project **does not support Windows**. Use macOS or Linux.
 ### Installation
 
 1. **For macOS:**
-
+```
    brew install picocom stlink
    brew install --cask gcc-arm-embedded
+```   
 
-1. **For Linux:**
-
+2. **For Linux:**
+```
    sudo apt-get install build-essential stlink-tools gcc-arm-none-eabi picocom
-
-1. Connect the provided SWD programmer via USB to your machine.
-1. Attach the programmer to the trophy using the JST jumper 4.
-1. Ensure light is on on the SWD programmer, indicating it's connected.
-1. To compile: `bash make `
-1. Power on the trophy by pressing the mode button.
-1. To install the compiled code: `bash make install `
+```
+3. Connect the provided SWD programmer via USB to your machine.
+4. Attach the programmer to the trophy using the JST jumper 4.
+5. Ensure light is on on the SWD programmer, indicating it's connected.
+6. To compile: `bash make `
+7. Power on the trophy by pressing the mode button.
+8. To install the compiled code: `bash make install `
 
 ## Debugging & Development
 
-**Probe the device to check if it's connected:** (device must be powered on by pressing the mode button) `bash st-info --probe `
-**Reset the device** `bash st-flash reset `
-**Hard reset (if needed)** Remove the battery for approximately 5 seconds and reinsert it (ensure the correct polarity to avoid damage). **Warning:** Inserting the battery the wrong way will fry the device.
-
-For active development, comment out the following line in Src/app.c to prevent the device from entering low-power mode (note: this will quickly drain the battery): `HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);`
+- **Probe the device to check if it's connected:** (device must be powered on by pressing the mode button) `bash st-info --probe `
+- **Reset the device** `bash st-flash reset `
+- **Hard reset (if needed)** Remove the battery for approximately 5 seconds and reinsert it (ensure the correct polarity to avoid damage)**Warning:** Inserting the battery the wrong way will fry the device
+- For active development, comment out the following line in Src/app.c to prevent the device from entering low-power mode (note: this will quickly drain the battery): `HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);`
 
 ## Usage
 
