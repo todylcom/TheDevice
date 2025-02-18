@@ -1,5 +1,6 @@
 #include "leds.h"
 #include "main.h"
+#include <stdlib.h> 
 
 static uint32_t counter = 0;
 
@@ -247,3 +248,67 @@ void breathing() {
     HAL_Delay(delay);
   }
 }
+
+void flash_letters(int level) {
+  set_letter_t(level);
+  HAL_Delay(500);
+  set_letter_o(level);
+  HAL_Delay(500);
+  set_letter_d(level);
+  HAL_Delay(500);
+  set_letter_y(level);
+  HAL_Delay(500);
+  set_letter_l(level);
+  HAL_Delay(500);
+  set_logo(level);
+  HAL_Delay(1000);
+}
+
+void flash_multiple_times(int level, int num_strikes) {
+  for (int i = 0; i < num_strikes; i++) {
+    set_letter_t(level);
+    set_letter_o(level);
+    set_letter_d(level);
+    set_letter_y(level);
+    set_letter_l(level);
+    set_logo(level);
+    HAL_Delay(500); // Hold for half a second
+
+    set_all_leds(0); // Turn off all letters
+    HAL_Delay(500);  // Small delay between flashes
+  }
+}
+
+void random_flash(int delay_time, int num_strikes) {
+  for (int i = 0; i < num_strikes; i++) {
+    for (int i = 0; i < NUM_LEDS; i++) {
+        int rand_state = rand() % 2;
+        int brightness = (rand() % 10) + 1;
+        if (rand_state) {
+            dutys[i] = brightness;
+        } else {
+            dutys[i] = 0;
+        }
+    }
+    HAL_Delay(delay_time);
+  }
+}
+
+void random_brightness(int max_brightness, int min_brightness, int num_strikes) {
+  for (int i = 0; i < num_strikes; i++) {
+    int brightness = rand() % (max_brightness - min_brightness + 1) + min_brightness;
+    for (int i = 0; i < NUM_LEDS; i++) {
+      dutys[i] = brightness;
+    }
+    HAL_Delay(500);
+  }
+}
+
+void fadeout(int level) {
+  for (int32_t i = level; i >= 0; i--) {
+    set_all_leds(i);
+    HAL_Delay(200);
+  }
+}
+
+
