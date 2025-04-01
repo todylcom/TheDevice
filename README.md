@@ -14,6 +14,8 @@ TheDevice is a Peer Award Trophy that evolves with each person who wins the Peer
 - Flashes alternating letters with random brightness.
 - Flashes with random brightness.
 - Fades out gradually.
+- Meteor shower effect.
+- Lights up on each end converges to the center and expands back out.
 
 ## Technologies
 

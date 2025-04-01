@@ -36,6 +36,9 @@ void app() {
     random_brightness(level, 5, 5);
     fadeout(level);
 
+    meteor_shower(level, 3, 100, 5);
+    converge_and_expand(100, level, 5);
+
     set_all_leds(0);
     stop_leds();
 
