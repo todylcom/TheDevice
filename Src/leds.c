@@ -1,6 +1,6 @@
 #include "leds.h"
 #include "main.h"
-#include <stdlib.h> 
+#include <stdlib.h>
 
 static uint32_t counter = 0;
 
@@ -310,5 +310,51 @@ void fadeout(int level) {
     HAL_Delay(200);
   }
 }
+
+void meteor_shower(int level, int tail_length, int delay_time, int repetitions) {
+  for (int r = 0; r < repetitions; r++) {
+    for (int i = 0; i < NUM_LEDS + tail_length; i++) {
+      set_all_leds(0);
+
+      for (int j = 0; j < tail_length; j++) {
+        int pos = i - j;
+        if (pos >= 0 && pos < NUM_LEDS) {
+          dutys[pos] = level - (j * (level / tail_length));  // Dimming tail effect
+        }
+      }
+
+      HAL_Delay(delay_time);
+    }
+  }
+}
+
+void converge_and_expand(int delay_time, int level, int repetitions) {
+    int half = NUM_LEDS / 2;
+
+    for (int j = 0; j <= repetitions; j++) {
+
+        // Move LEDs from ends to center
+        for (int i = 0; i <= half; i++) {
+            // Turn on symmetric LEDs
+            dutys[i] = level;
+            dutys[NUM_LEDS - 1 - i] = level;
+            HAL_Delay(delay_time);
+        }
+
+        // Pause at the center
+        HAL_Delay(2 * delay_time);
+
+        // Move LEDs back to the edges
+        for (int i = half; i >= 0; i--) {
+            // Turn off symmetric LEDs
+            dutys[i] = 0;
+            dutys[NUM_LEDS - 1 - i] = 0;
+            HAL_Delay(delay_time);
+        }
+    }
+}
+
+
+
 
 
