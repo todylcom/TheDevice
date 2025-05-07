@@ -354,7 +354,47 @@ void converge_and_expand(int delay_time, int level, int repetitions) {
     }
 }
 
+void bouncing_negative(int initial_delay, int delay_step, int repetitions,
+                       int max_level) {
+  int delay = initial_delay;
+  set_all_leds(0);
 
+  for (int r = 0; r < repetitions; r++) {
+    // Move center from start to end and back to start
+    for (int i = 0; i < 2 * NUM_LEDS - 2; i++) {
+      int pos = i;
+      if (i >= NUM_LEDS) {
+        pos = 2 * (NUM_LEDS - 1) - i;
+      }
 
+      // Determine level based on distance from pos
+      // 0 -> 0
+      // 1 -> 1 
+      // 2 -> 2
+      // else -> 10
+      for (int j = 0; j < NUM_LEDS; j++) {
+        int dist = abs(pos - j);
+        int level = max_level;
+        switch (dist) {
+          case 0:
+            level = 0;
+            break;
+          case 1:
+            level = 1;
+            break;
+          case 2:
+            level = 2;
+            break;
+        }
 
+        dutys[j] = level;
+      }
 
+      HAL_Delay(delay);
+    }
+
+    if (delay > delay_step) {
+      delay -= delay_step; // Decrease delay for faster chasing
+    }
+  }
+}

@@ -39,6 +39,8 @@ void app() {
     meteor_shower(level, 3, 100, 5);
     converge_and_expand(100, level, 5);
 
+    bouncing_negative(200, 20, 10, level);
+
     set_all_leds(0);
     stop_leds();
 

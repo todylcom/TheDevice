@@ -16,6 +16,7 @@ TheDevice is a Peer Award Trophy that evolves with each person who wins the Peer
 - Fades out gradually.
 - Meteor shower effect.
 - Lights up on each end converges to the center and expands back out.
+- "Negative" back and forth ("off" letter is moving instead of "on" letter)
 
 ## Technologies
 
