@@ -31,3 +31,5 @@ void fadeout(int level);
 
 void meteor_shower(int level, int tail_length, int delay_time, int repetitions);
 void converge_and_expand(int delay_time, int level, int repetitions);
+void bouncing_negative(int initial_delay, int delay_step, int repetitions,
+                       int max_level);
